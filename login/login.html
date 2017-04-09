@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="login.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //function called when user hovers over the Login box
+            $(".box4").hover(
+                //background made blur when box comes in focus
+                function () {
+                    $('#back').css({ "filter": "blur(5px)" });
+                    $('#back').css({ "-moz-filter": "blur(5px)" });
+                    $('#back').css({ "transition": "1s ease" });
+                },
+                //background back to normal when box out of focus
+                function () {
+                    $('#back').css({ "filter": "blur(0px)" });
+                    $('#back').css({ "transition": "1s ease" });
+                });
+            //display login box when login button at top is clicked
+            $("#login").click(
+                function () {
+                    $("#box1").css({ "display": "block" });
+                    $("#box2").css({ "display": "none" });
+
+                });
+            //display sign up box when sign up button at top is clicked
+            $("#signup").click(
+                function () {
+                    $("#box2").css({ "display": "block" });
+                    $("#box1").css({ "display": "none" });
+
+                });
+            //checks if email is valid or not
+            function isEmail(email) {
+                var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                return regex.test(email);
+            }
+            $("#signupButton").click(function () {
+                var error = 0;
+                //if email not valid changes border color of email field to red
+                if (isEmail($("#email").val()) == false) {
+                    error = 1;
+                    $("#email").css({ "borderColor": "red" });
+
+                }
+                else {
+                    $("#email").css({ "borderColor": "#666666" });
+                }
+                //checks if passwords match or not
+                if ($("#pass").val() != $("#confirmpass").val()) {
+                    error = 1;
+                    $("#notmatch").html("Passwords do not match!");
+                }
+                //if there is any error prevent form from submitting
+                if (error == 1) {
+                    $("#form2").submit(function (e) {
+                        e.preventDefault();
+                    });
+                }
+                else {
+                    $("#form2")[0].submit();
+                }
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <img src="background.jpg" alt="" id="back">
+    <center>
+        <main>
+            <div id="main">
+                <!--login button at top-->
+                <div class="login" id="login">Login</div>
+                <!--sign up button at top-->
+                <div class="login" id="signup">Sign Up</div>
+                <!--login box-->
+                <div class="box">
+                    <div class="box4" id="box1">
+
+                        <form action="" class="form">
+                            <h2>Log In</h2>
+                            <br><br>
+                            <!--username field-->
+                            <input type="text" class="details" name="username" placeholder="Username">
+                            <br>
+                            <br>
+                            <!--password field-->
+                            <input type="password" class="details" name="password" placeholder="Password">
+                            <!--forgot password button-->
+                            <div class="forgot">
+                                <a href="">Forgot password?</a>
+                            </div>
+                            <br><br>
+                            <!--login submit button-->
+                            <input type="submit" class="submit" value="Log In">
+                        </form>
+                    </div>
+                </div>
+                <!--sign up box-->
+                <div class="box">
+                    <div class="box4" id="box2">
+
+                        <form action="" class="form" id="form2">
+                            <h2>Sign Up</h2>
+                            <!--username field-->
+                            <input type="text" class="details" name="username" placeholder="Username">
+                            <br><br>
+                            <!--email field-->
+                            <input type="email" class="details" id="email" name="email" placeholder="Email Address">
+                            <br><br>
+                            <!--password field-->
+                            <input type="password" class="details" name="password" id="pass" placeholder="Password">
+                            <br><br>
+                            <!--confirm password field-->
+                            <input type="password" class="details" name="password" id="confirmpass" placeholder="Confirm Password">
+                            <br>
+                            <!--paragraph tag to show message if passwords do not match-->
+                            <p id="notmatch"></p>
+                            <br>
+                            <!--sign up submit button-->
+                            <input type="submit" class="submit" value="Sign Up" id="signupButton">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </center>
+</body>
+
+</html>
