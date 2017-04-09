@@ -36,13 +36,48 @@
                     $("#box1").css({ "display": "none" });
 
                 });
-            //checks if email is valid or not
+            //function to check if email is valid or not
             function isEmail(email) {
                 var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
                 return regex.test(email);
             }
+            $("#loginButton").click(function(){
+                var error=0;
+                var warning="";
+                //function to check if input fields of login page are filled or not
+                $('#form1 :input').each(function ()
+                    {
+                        if ($.trim(this.value) == "") 
+                        {
+                            error=1;
+                            warning="One or more field is empty!";
+                        }
+
+                    });
+                    if (error == 1) {
+                    $("#warning").html(warning);
+                    $("#form1").submit(function (e) {
+                        e.preventDefault();
+                    });
+                }
+                else {
+                    $("#form1")[0].submit();
+                }
+            });
             $("#signupButton").click(function () {
                 var error = 0;
+                var warning="";
+                   //function to check if input fields of sign up page are filled or not
+                    $('#form2 :input').each(function ()
+                    {
+                        if ($.trim(this.value) == "") 
+                        {
+                            error=1;
+                            warning="One or more field is empty!";
+                        }
+
+                    });
+
                 //if email not valid changes border color of email field to red
                 if (isEmail($("#email").val()) == false) {
                     error = 1;
@@ -55,10 +90,11 @@
                 //checks if passwords match or not
                 if ($("#pass").val() != $("#confirmpass").val()) {
                     error = 1;
-                    $("#notmatch").html("Passwords do not match!");
+                    warning+="<br>Passwords do not match!";
                 }
                 //if there is any error prevent form from submitting
                 if (error == 1) {
+                    $("#notmatch").html(warning);
                     $("#form2").submit(function (e) {
                         e.preventDefault();
                     });
@@ -85,23 +121,23 @@
                 <!--login box-->
                 <div class="box">
                     <div class="box4" id="box1">
-
-                        <form action="" class="form">
+                        <form action="" class="form" id="form1">
                             <h2>Log In</h2>
-                            <br><br>
+                            
                             <!--username field-->
                             <input type="text" class="details" name="username" placeholder="Username">
-                            <br>
-                            <br>
+                            
                             <!--password field-->
                             <input type="password" class="details" name="password" placeholder="Password">
                             <!--forgot password button-->
                             <div class="forgot">
                                 <a href="">Forgot password?</a>
                             </div>
-                            <br><br>
+                            <!--paragraph to show warning message-->
+                            <p id="warning"></p>
+                            <br>
                             <!--login submit button-->
-                            <input type="submit" class="submit" value="Log In">
+                            <input type="submit" class="submit" value="Log In" id="loginButton">
                         </form>
                     </div>
                 </div>
@@ -110,22 +146,21 @@
                     <div class="box4" id="box2">
 
                         <form action="" class="form" id="form2">
-                            <h2>Sign Up</h2>
+                            <h2 id="signuph2">Sign Up</h2>
                             <!--username field-->
                             <input type="text" class="details" name="username" placeholder="Username">
-                            <br><br>
+                            
                             <!--email field-->
                             <input type="email" class="details" id="email" name="email" placeholder="Email Address">
-                            <br><br>
+                            
                             <!--password field-->
                             <input type="password" class="details" name="password" id="pass" placeholder="Password">
-                            <br><br>
+                            
                             <!--confirm password field-->
                             <input type="password" class="details" name="password" id="confirmpass" placeholder="Confirm Password">
                             <br>
                             <!--paragraph tag to show message if passwords do not match-->
                             <p id="notmatch"></p>
-                            <br>
                             <!--sign up submit button-->
                             <input type="submit" class="submit" value="Sign Up" id="signupButton">
                         </form>

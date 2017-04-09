@@ -2,6 +2,7 @@ body{
     max-height: 100%;
     max-width: 100%;
     margin: 0;
+    font-family: helvetica,sans-serif;
     background-size: cover;
 }
 #back{
@@ -21,7 +22,7 @@ body{
 #signup{
     position:absolute;
     top: 13%;
-    left: 56%;
+    left: 57%;
     transform: translate(-50%, -50%);
 }
 .login{
@@ -88,6 +89,7 @@ body{
 .details{
     padding-left: 5px;
     padding-right: 5px;
+    margin-top: 20px;
     color:#666;
     height: 40px;
     width: 225px;
@@ -111,6 +113,16 @@ a{
     border: #666666 1px solid;
     border-radius: 5px;
 }
+#signuph2{
+    margin-bottom: 0px;
+}
+#warning{
+    height: 10px;
+    font-size: 10px;
+    margin:5px 0 0 0;
+}
 #notmatch{
-    font-size: 12px;
+    height: 28px;
+    font-size: 10px;
+    margin:5px 0 0 0;
 }
