@@ -1,0 +1,39 @@
+body{
+    position: relative;
+}
+.jumbotron{
+    background-image: url('jumbotron-background.jpeg');
+    background-size: cover;
+    color: white;
+    text-align: center;
+    margin-top: 60px;
+}
+#email{
+    width: 300px;
+}
+#email-group{
+    justify-content: center;
+}
+#appSummary{
+    text-align: center;
+    margin: 75px 0 75px 0;
+}
+#card-img-top{
+    width: 240px;
+    background-size: cover;
+}
+#appstoreicon{
+    width: 250px;
+    height: 75px;
+}
+#playicon{
+    width: 250px;
+    height: 75px;
+}
+#icons{
+    background-color: aquamarine;
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
